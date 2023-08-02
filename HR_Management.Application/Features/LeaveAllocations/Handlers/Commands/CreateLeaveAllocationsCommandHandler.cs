@@ -11,6 +11,11 @@ namespace HR_Management.Application.Features.LeaveAllocations.Handlers.Commands
     public class CreateLeaveAllocationsCommandHandler
         : IRequestHandler<CreateLeaveAllocationsCommand, int>
     {
+        public CreateLeaveAllocationsCommandHandler()
+        {
+                
+        }
+
         public Task<int> Handle(CreateLeaveAllocationsCommand request, CancellationToken cancellationToken)
         {
             throw new NotImplementedException();
