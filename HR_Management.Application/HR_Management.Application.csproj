@@ -1,0 +1,27 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
+    <PackageReference Include="MediatR" Version="11.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\HR_Management_Domain\HR_Management_Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="DTOS\Common\" />
+    <Folder Include="Features\LeaveAllocations\Handlers\Commands\" />
+    <Folder Include="Features\LeaveAllocations\Requests\Commands\" />
+    <Folder Include="Features\LeaveRequests\Handlers\Commands\" />
+    <Folder Include="Features\LeaveRequests\Requests\Commands\" />
+    <Folder Include="Features\LeaveTypes\Handlers\Commands\" />
+    <Folder Include="Features\LeaveTypes\Requests\Commands\" />
+  </ItemGroup>
+
+</Project>
