@@ -1,4 +1,4 @@
-﻿using HR_Management.Application.DTOS;
+﻿using HR_Management.Application.DTOS.LeaveAllocation;
 using HR_Management_Domain;
 using MediatR;
 using System;
