@@ -17,7 +17,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UI", "UI", "{52B8ABEB-C708-
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HR_Management.Application", "HR_Management.Application\HR_Management.Application.csproj", "{3941D2AC-3AE0-4CB0-9CCF-EE46B76DFD25}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HR_Management_Domain", "HR_Management_Domain\HR_Management_Domain.csproj", "{796D0D9A-1F83-4293-81D5-C5ECFC031B09}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HR_Management_Domain", "HR_Management_Domain\HR_Management_Domain.csproj", "{796D0D9A-1F83-4293-81D5-C5ECFC031B09}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
