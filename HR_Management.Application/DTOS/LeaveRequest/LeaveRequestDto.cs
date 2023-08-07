@@ -21,7 +21,7 @@ namespace HR_Management.Application.DTOS.LeaveRequest
 
         public DateTime DateActioned { get; set; }
 
-        public bool? Aoorived { get; set; }
+        public bool? Approved { get; set; }
 
         public bool Cancelled { get; set; }
     }

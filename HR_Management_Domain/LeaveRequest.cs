@@ -22,7 +22,7 @@ namespace HR_Management_Domain
 
         public DateTime DateActioned { get; set; }
 
-        public bool? Aoorived { get; set; }
+        public bool? Approved { get; set; }
 
         public bool Cancelled { get; set; }
 
