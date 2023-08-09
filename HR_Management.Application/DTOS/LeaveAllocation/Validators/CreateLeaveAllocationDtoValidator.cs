@@ -1,10 +1,20 @@
-﻿using System;
+﻿using FluentValidation;
+using HR_Management.Application.Persistence.Contracts;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace HR_Management.Application.DTOS.LeaveAllocation.Validators
 {
-    internal class CreateLeaveAllocationDtoValidator
+    public class CreateLeaveAllocationDtoValidator : AbstractValidator<CreateLeaveAllocationDto>
     {
+        private readonly ILeaveTypeRepository _leaveTypeRepository;
+
+        public CreateLeaveAllocationDtoValidator(ILeaveTypeRepository leaveTypeRepository)
+        {
+            _leaveTypeRepository = leaveTypeRepository;
+
+            Include(new ILeaveAllocationDtoValidator(_leaveTypeRepository));
+        }
     }
 }
