@@ -1,11 +1,11 @@
-﻿using HR_Management.Application.DTOS.Common;
+﻿using HR_Management.Application.DTOS.LeaveType;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace HR_Management.Application.DTOS.LeaveRequest
 {
-    public class UpdateLeaveRequestDto : BaseDto, ILeaveRequestDto
+    public interface ILeaveRequestDto
     {
         public DateTime StartDate { get; set; }
 
@@ -13,8 +13,5 @@ namespace HR_Management.Application.DTOS.LeaveRequest
 
         public int LeaveTypeId { get; set; }
 
-        public string RequestComments { get; set; }
-
-        public bool Cancelled { get; set; }
     }
 }
