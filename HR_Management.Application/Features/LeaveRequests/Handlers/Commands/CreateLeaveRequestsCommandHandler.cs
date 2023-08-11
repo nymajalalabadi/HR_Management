@@ -50,7 +50,7 @@ namespace HR_Management.Application.Features.LeaveRequests.Handlers.Commands
             response.Message = "Creation Successful";
             response.Id = leaveRequest.Id;
 
-            return response.Id;
+            return response;
         }
     }
 }
