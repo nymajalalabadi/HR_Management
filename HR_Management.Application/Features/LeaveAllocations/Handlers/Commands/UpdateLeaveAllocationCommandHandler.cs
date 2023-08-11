@@ -1,14 +1,12 @@
 ﻿using AutoMapper;
 using HR_Management.Application.DTOS.LeaveAllocation.Validators;
+using HR_Management.Application.Exceptions;
 using HR_Management.Application.Features.LeaveAllocations.Requests.Commands;
 using HR_Management.Application.Persistence.Contracts;
 using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
- 
+
 namespace HR_Management.Application.Features.LeaveAllocations.Handlers.Commands
 {
     public class UpdateLeaveAllocationCommandHandler : IRequestHandler<UpdateLeaveAllocationCommand, Unit>
@@ -17,8 +15,7 @@ namespace HR_Management.Application.Features.LeaveAllocations.Handlers.Commands
         private readonly IMapper _mapper;
         private readonly ILeaveTypeRepository _leaveTypeRepository;
 
-        public UpdateLeaveAllocationCommandHandler(ILeaveAllocationRepository leaveAllocationRepository, ILeaveTypeRepository leaveTypeRepository,
-            IMapper mapper)
+        public UpdateLeaveAllocationCommandHandler(ILeaveAllocationRepository leaveAllocationRepository, ILeaveTypeRepository leaveTypeRepository, IMapper mapper)
         {
             _leaveAllocationRepository = leaveAllocationRepository;
             _leaveTypeRepository = leaveTypeRepository;
@@ -32,9 +29,8 @@ namespace HR_Management.Application.Features.LeaveAllocations.Handlers.Commands
             var validationResult = await validator.ValidateAsync(request.UpdateLeaveAllocationDto);
 
             if (validationResult.IsValid == false)
-            {
-                throw new Exception();
-            }
+                throw new ValidationException(validationResult);
+            
 
             var leaveAllocation = await _leaveAllocationRepository.Get(request.UpdateLeaveAllocationDto.Id);
 
