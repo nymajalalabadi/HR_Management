@@ -1,4 +1,4 @@
-﻿using HR_Management.Application.Persistence.Contracts;
+﻿using HR_Management.Application.Contracts.Persistence;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;

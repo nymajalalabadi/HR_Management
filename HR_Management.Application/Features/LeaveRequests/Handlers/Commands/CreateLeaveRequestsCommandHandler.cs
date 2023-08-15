@@ -2,13 +2,15 @@
 using HR_Management.Application.DTOS.LeaveRequest.Validators;
 using HR_Management.Application.Exceptions;
 using HR_Management.Application.Features.LeaveRequests.Requests.Commands;
-using HR_Management.Application.Persistence.Contracts;
+using HR_Management.Application.Contracts.Persistence;
 using HR_Management.Application.Responses;
 using HR_Management_Domain;
 using MediatR;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using HR_Management.Application.Contracts.infrastructure;
+using HR_Management.Application.Models;
 
 namespace HR_Management.Application.Features.LeaveRequests.Handlers.Commands
 {
@@ -18,12 +20,14 @@ namespace HR_Management.Application.Features.LeaveRequests.Handlers.Commands
         private readonly ILeaveRequestRepository _leaveRequestRepository;
         private readonly ILeaveTypeRepository _leaveTypeRepository;
         private readonly IMapper _mapper;
+        private readonly IEmailSender _emailSender;
         public CreateLeaveRequestsCommandHandler(ILeaveRequestRepository leaveRequestRepository, ILeaveTypeRepository leaveTypeRepository,
-            IMapper mapper)
+            IMapper mapper, IEmailSender emailSender)
         {
             _leaveRequestRepository = leaveRequestRepository;
             _leaveTypeRepository = leaveTypeRepository;
             _mapper = mapper;
+            _emailSender = emailSender;
         }
 
         public async Task<BaseCommandResponses> Handle(CreateLeaveRequestsCommand request, CancellationToken cancellationToken)
@@ -49,6 +53,25 @@ namespace HR_Management.Application.Features.LeaveRequests.Handlers.Commands
             response.Success = true;
             response.Message = "Creation Successful";
             response.Id = leaveRequest.Id;
+
+            var email = new Email()
+            {
+                To = "nymajalalabadi@gmail.com",
+                Subject = "leave request submitted",
+                Body = $"your leave requst {request.CreateLeaveRequestsDto.StartDate}" + 
+                $"to {request.CreateLeaveRequestsDto.EndDate}" + 
+                $"has been submitted"
+            };
+
+            try
+            {
+                await _emailSender.SendEmail(email);
+            }
+            catch (System.Exception)
+            {
+
+                throw;
+            }
 
             return response;
         }
