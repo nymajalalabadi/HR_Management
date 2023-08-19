@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\HR_Management.Application\HR_Management.Application.csproj" />
+    <ProjectReference Include="..\HR_Management.Infrastructure\HR_Management.Infrastructure.csproj" />
+    <ProjectReference Include="..\HR_Management.Persistence\HR_Management.Persistence.csproj" />
+    <ProjectReference Include="..\HR_Management_Domain\HR_Management_Domain.csproj" />
+  </ItemGroup>
+
+</Project>
