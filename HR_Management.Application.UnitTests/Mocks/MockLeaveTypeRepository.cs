@@ -39,8 +39,6 @@ namespace HR_Management.Application.UnitTests.Mocks
 				return leavetype;
 			});
 
-
-
 			return mockRepository;
 		}
 	}
