@@ -1,10 +1,17 @@
+using HR_Management.MVC.Contracts;
 using HR_Management.MVC.Services;
+using HR_Management.MVC.Services.Base;
 using Microsoft.Extensions.DependencyInjection;
+using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddHttpClient<IClient, Client>
 	(c => c.BaseAddress = new Uri(builder.Configuration.GetSection("ApiAddress").Value));
+
+builder.Services.AddSingleton<ILocalStrogeService, LocalStrogeService>();
+
+builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();

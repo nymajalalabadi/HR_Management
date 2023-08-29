@@ -15,7 +15,7 @@
 #pragma warning disable 8603 // Disable "CS8603 Possible null reference return"
 #pragma warning disable 8604 // Disable "CS8604 Possible null reference argument for parameter"
 
-namespace HR_Management.MVC.Services
+namespace HR_Management.MVC.Services.Base
 {
     using System = global::System;
 
@@ -1498,7 +1498,7 @@ namespace HR_Management.MVC.Services
         }
     }
 
-    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.20.0.0 (NJsonSchema v10.9.0.0 (Newtonsoft.Json v13.0.0.0))")]
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.20.0.0 (NJs onSchema v10.9.0.0 (Newtonsoft.Json v13.0.0.0))")]
     public partial class ChangeLeaveRequestApprovalDto
     {
         [Newtonsoft.Json.JsonProperty("id", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
