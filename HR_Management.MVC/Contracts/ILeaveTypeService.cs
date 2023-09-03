@@ -11,7 +11,7 @@ namespace HR_Management.MVC.Contracts
 
 		Task<Response<int>> CreateLeaveType(LeaveTypeVM leaveType);
 
-		Task UpdateLeaveType(LeaveTypeVM leaveType);
-		Task DeleteLeaveType(LeaveTypeVM leaveType);
+		Task<Response<int>> UpdateLeaveType(LeaveTypeVM leaveType, int id);
+		Task<Response<int>> DeleteLeaveType(int id);
 	}
 }

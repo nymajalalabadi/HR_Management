@@ -11,14 +11,14 @@ namespace HR_Management.MVC.Services
 		private readonly ILocalStrogeService _localStrogeService;
 		private readonly IMapper _mapper;
 
-		public LeaveTypeService(IMapper mapper , IClient htppClient, ILocalStrogeService localStrogeService) : base(htppClient, localStrogeService)
-        {
+		public LeaveTypeService(IMapper mapper, IClient htppClient, ILocalStrogeService localStrogeService) : base(htppClient, localStrogeService)
+		{
 			_mapper = mapper;
-            _htppClient = htppClient;
+			_htppClient = htppClient;
 			_localStrogeService = localStrogeService;
-        }
+		}
 
-        public async Task<Response<int>> CreateLeaveType(LeaveTypeVM leaveType)
+		public async Task<Response<int>> CreateLeaveType(LeaveTypeVM leaveType)
 		{
 			try
 			{
@@ -52,24 +52,52 @@ namespace HR_Management.MVC.Services
 			}
 		}
 
-		public Task DeleteLeaveType(LeaveTypeVM leaveType)
+		public async Task<Response<int>> DeleteLeaveType(int id)
 		{
-			throw new NotImplementedException();
+			try
+			{
+				await _client.LeaveTypesDELETEAsync(id);
+
+				return new Response<int> { Success = true };
+			}
+			catch (ApiException ex)
+			{
+
+				return ConvertApiExceptions<int>(ex);
+			}
 		}
 
-		public Task<LeaveTypeVM> GetLeaveTypeDetails(int id)
+		public async Task<LeaveTypeVM> GetLeaveTypeDetails(int id)
 		{
-			throw new NotImplementedException();
+			var leavetype = await _client.LeaveTypesGETAsync(id);
+
+			return _mapper.Map<LeaveTypeVM>(leavetype);
+
 		}
 
-		public Task<List<LeaveTypeVM>> GetLeaveTypes()
+		public async Task<List<LeaveTypeVM>> GetLeaveTypes()
 		{
-			throw new NotImplementedException();
+			var leaveTypes = await _client.LeaveTypesAllAsync();
+			return _mapper.Map<List<LeaveTypeVM>>(leaveTypes);
 		}
 
-		public Task UpdateLeaveType(LeaveTypeVM leaveType)
+		public async Task<Response<int>> UpdateLeaveType(LeaveTypeVM leaveType, int id)
 		{
-			throw new NotImplementedException();
+			try
+			{
+				LeaveTypeDto leaveTypeDto = _mapper.Map<LeaveTypeDto>(leaveType);
+
+				await _client.LeaveTypesPUTAsync(id, leaveTypeDto);
+
+				return new Response<int>
+				{
+					Success = true
+				};
+			}
+			catch (ApiException ex)
+			{
+				return ConvertApiExceptions<int>(ex);
+			}
 		}
 	}
 }
