@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using HR_Management.MVC.Contracts;
 using HR_Management.MVC.Mapping;
+using HR_Management.MVC.Models;
 using HR_Management.MVC.Services.Base;
 
 namespace HR_Management.MVC.Services
@@ -18,14 +19,14 @@ namespace HR_Management.MVC.Services
 			_localStrogeService = localStrogeService;
 		}
 
-		public async Task<Response<int>> CreateLeaveType(LeaveTypeVM leaveType)
+		public async Task<Response<int>> CreateLeaveType(CreateLeaveTypeVM createLeaveType)
 		{
 			try
 			{
 				var response = new Response<int>();
 
 				CreateLeaveTypeDto createLeaveTypeDto =
-					_mapper.Map<CreateLeaveTypeDto>(leaveType);
+					_mapper.Map<CreateLeaveTypeDto>(createLeaveType);
 
 				//TODO Auth
 
