@@ -1,4 +1,5 @@
-﻿using HR_Management.Identity.Models;
+﻿using HR_Management.Identity.Configurations;
+using HR_Management.Identity.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -14,6 +15,8 @@ namespace HR_Management.Identity
 		protected override void OnModelCreating(ModelBuilder modelBuilder)
 		{
 			base.OnModelCreating(modelBuilder);
+
+			modelBuilder.ApplyConfiguration(new RoleConfiguration());
 		}
 	}
 }
