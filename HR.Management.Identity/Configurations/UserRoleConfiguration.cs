@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace HR_Management.Identity.Configurations
+namespace HR.Management.Identity.Configurations
 {
 	public class UserRoleConfiguration : IEntityTypeConfiguration<IdentityUserRole<string>>
 	{
@@ -19,8 +19,8 @@ namespace HR_Management.Identity.Configurations
 				},
 				new IdentityUserRole<string>
 				{
-					  UserId = "2ec9f480-7288-4d0f-a1cd-53cc89968b45",
-					  RoleId = "9845f909-799c-45fd-9158-58c1336ffddc"
+					UserId = "2ec9f480-7288-4d0f-a1cd-53cc89968b45",
+					RoleId = "9845f909-799c-45fd-9158-58c1336ffddc"
 				}
 				);
 		}

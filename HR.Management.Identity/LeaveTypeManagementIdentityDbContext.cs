@@ -1,5 +1,5 @@
-﻿using HR_Management.Identity.Configurations;
-using HR_Management.Identity.Models;
+﻿using HR.Management.Identity.Configurations;
+using HR.Management.Identity.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;

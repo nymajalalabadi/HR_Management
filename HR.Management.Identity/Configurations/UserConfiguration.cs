@@ -1,12 +1,9 @@
-﻿using HR_Management.Identity.Models;
+﻿using HR.Management.Identity.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace HR_Management.Identity.Configurations
+namespace HR.Management.Identity.Configurations
 {
 	public class UserConfiguration : IEntityTypeConfiguration<ApplicationUser>
 	{
