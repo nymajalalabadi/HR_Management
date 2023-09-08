@@ -8,7 +8,6 @@
 
   <ItemGroup>
     <Folder Include="Migrations\" />
-    <Folder Include="Services\" />
   </ItemGroup>
 
 	<ItemGroup>
@@ -23,6 +22,10 @@
 		<PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="6.0.0" />
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
 		<PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.32.1" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\HR_Management.Application\HR_Management.Application.csproj" />
 	</ItemGroup>
 
 </Project>
