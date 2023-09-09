@@ -10,6 +10,6 @@ namespace HR_Management.Application.Contracts.Identity
 	{
 		Task<AuthResponse> Login(AuthRequest authRequest);
 
-		Task<RegistrationResponse> Reqister(RegisterationRequest request);
+		Task<RegistrationResponse> Register(RegisterationRequest request);
 	}
 }
