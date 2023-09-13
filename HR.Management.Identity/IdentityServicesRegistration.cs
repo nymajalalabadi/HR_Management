@@ -25,7 +25,7 @@ namespace HR.Management.Identity
 
 			services.AddDbContext<LeaveTypeManagementIdentityDbContext>(options =>
 			{
-				options.UseSqlServer(configuration.GetConnectionString("LeaveManagementConnectionString"),
+				options.UseSqlServer(configuration.GetConnectionString("LeaveManagementIdentityConnectionString"),
 					b => b.MigrationsAssembly(typeof(LeaveTypeManagementIdentityDbContext).Assembly.FullName)
 					);
 			});
