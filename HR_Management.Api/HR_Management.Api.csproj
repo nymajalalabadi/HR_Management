@@ -17,6 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\HR.Management.Identity\HR.Management.Identity.csproj" />
     <ProjectReference Include="..\HR_Management.Application\HR_Management.Application.csproj" />
     <ProjectReference Include="..\HR_Management.Infrastructure\HR_Management.Infrastructure.csproj" />
     <ProjectReference Include="..\HR_Management.Persistence\HR_Management.Persistence.csproj" />
