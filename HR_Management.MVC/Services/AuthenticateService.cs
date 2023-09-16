@@ -33,9 +33,12 @@ namespace HR_Management.MVC.Services
 				if (authenticateResponse.Token != string.Empty)
 				{
 					var tokenContent = _jwtSecurityTokenHandler.ReadJwtToken(authenticateResponse.Token);
+
 					var claims = ParseClaims(tokenContent);
+
 					var user = new ClaimsPrincipal(new ClaimsIdentity(claims,
 						CookieAuthenticationDefaults.AuthenticationScheme));
+
 					var login = _httpContextAccessor.HttpContext.SignInAsync(
 						CookieAuthenticationDefaults.AuthenticationScheme, user);
 
@@ -70,7 +73,9 @@ namespace HR_Management.MVC.Services
 				FirstName = firstName,
 				LastName = lastName,
 			};
+
 			var response = await _client.RegisterAsync(registrationRequest);
+
 			if (!string.IsNullOrEmpty(response.UserId))
 			{
 				return true;

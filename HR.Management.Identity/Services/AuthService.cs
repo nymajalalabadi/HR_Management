@@ -36,6 +36,7 @@ namespace HR.Management.Identity.Services
 		public async Task<RegistrationResponse> Register(RegisterationRequest request)
 		{
 			var existingUser = await _userManager.FindByNameAsync(request.UserName);
+
 			if (existingUser != null)
 			{
 				throw new Exception($"user name '{request.UserName}' already exists.");
