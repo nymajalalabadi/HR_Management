@@ -12,26 +12,42 @@ namespace HR_Management.MVC.Controllers
 			_AuthenticateService = AuthenticateService;
         }
 
-        public  IActionResult Login(string returnUrl = null)
-		{
-			return View();
-		}
+        #region login
 
-		[HttpPost]
-		public async Task<IActionResult> Login(LoginVM login, string returnUrl)
-		{
-			returnUrl ??= Url.Content("~/");
+        public IActionResult Login(string returnUrl = null)
+        {
+            return View();
+        }
 
-			var isLoingIn = await _AuthenticateService.Authenticate(login.Email, login.Password);
+        [HttpPost]
+        public async Task<IActionResult> Login(LoginVM login, string returnUrl)
+        {
+            returnUrl ??= Url.Content("~/");
 
-			if (isLoingIn)
-			{
-				return LocalRedirect(returnUrl);
-			}
+            var isLoingIn = await _AuthenticateService.Authenticate(login.Email, login.Password);
 
-			ModelState.AddModelError("", "Login Failed ,Please Try Again ");
+            if (isLoingIn)
+            {
+                return LocalRedirect(returnUrl);
+            }
 
-			return View(login);
-		}
-	}
+            ModelState.AddModelError("", "Login Failed ,Please Try Again ");
+
+            return View(login);
+        }
+
+        #endregion
+
+
+        #region logout
+
+        [HttpPost]
+        public async Task<IActionResult> Logout()
+        {
+            await _AuthenticateService.Logout();
+            return LocalRedirect("/Users/Login");
+        }
+
+        #endregion
+    }
 }
