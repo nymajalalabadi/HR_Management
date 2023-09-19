@@ -1,16 +1,31 @@
 using HR_Management.MVC.Contracts;
 using HR_Management.MVC.Services;
 using HR_Management.MVC.Services.Base;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddHttpContextAccessor();
+
+builder.Services.Configure<CookiePolicyOptions>(options =>
+{
+	options.MinimumSameSitePolicy = SameSiteMode.None;
+});
+
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+	.AddCookie(option =>
+	{
+		option.LoginPath = "/Users/Login";
+	});
 
 builder.Services.AddHttpClient<IClient, Client>
 	(c => c.BaseAddress = new Uri(builder.Configuration.GetSection("ApiAddress").Value));
 
 builder.Services.AddSingleton<ILocalStrogeService, LocalStrogeService>();
 builder.Services.AddScoped<ILeaveTypeService, LeaveTypeService>();
+builder.Services.AddTransient<IAuthenticateService, AuthenticateService>();
 
 builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
@@ -26,6 +41,9 @@ if (!app.Environment.IsDevelopment())
 	// The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
 	app.UseHsts();
 }
+
+app.UseCookiePolicy();
+app.UseAuthentication();
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();

@@ -12,6 +12,34 @@ namespace HR_Management.MVC.Controllers
 			_AuthenticateService = AuthenticateService;
         }
 
+        #region register
+
+        public IActionResult Register()
+        {
+            return View();
+        }
+
+
+        [HttpPost]
+        public async Task<IActionResult> Register(RegisterVM register)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(register);
+            }
+
+            var regsiterUser = await _AuthenticateService.Register(register);
+            if (regsiterUser)
+            {
+                return LocalRedirect("/");
+            }
+
+            ModelState.AddModelError("", "Registerion Failed ,Please Try Again ");
+            return View(register);
+        }
+
+        #endregion
+
         #region login
 
         public IActionResult Login(string returnUrl = null)

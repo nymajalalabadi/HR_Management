@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
+using HR_Management.MVC.Models;
 
 namespace HR_Management.MVC.Services
 {
@@ -64,14 +65,14 @@ namespace HR_Management.MVC.Services
 			await _httpContextAccessor.HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
 		}
 
-		public async Task<bool> Register(string firstName, string lastName, string email, string password)
-		{
+		public async Task<bool> Register(RegisterVM register)
+        {
 			RegisterationRequest registrationRequest = new()
 			{
-				Email = email,
-				Password = password,
-				FirstName = firstName,
-				LastName = lastName,
+				Email = register.Email,
+				Password = register.Password,
+				FirstName = register.FirstName,
+				LastName = register.LastName
 			};
 
 			var response = await _client.RegisterAsync(registrationRequest);

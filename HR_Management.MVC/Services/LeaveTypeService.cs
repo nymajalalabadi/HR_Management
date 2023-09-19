@@ -28,7 +28,7 @@ namespace HR_Management.MVC.Services
 				CreateLeaveTypeDto createLeaveTypeDto =
 					_mapper.Map<CreateLeaveTypeDto>(createLeaveType);
 
-				//TODO Auth
+				AddBearerToken();
 
 				var apiResponse = await _client.LeaveTypesPOSTAsync(createLeaveTypeDto);
 
@@ -57,7 +57,9 @@ namespace HR_Management.MVC.Services
 		{
 			try
 			{
-				await _client.LeaveTypesDELETEAsync(id);
+                AddBearerToken();
+
+                await _client.LeaveTypesDELETEAsync(id);
 
 				return new Response<int> { Success = true };
 			}
@@ -70,7 +72,9 @@ namespace HR_Management.MVC.Services
 
 		public async Task<LeaveTypeVM> GetLeaveTypeDetails(int id)
 		{
-			var leavetype = await _client.LeaveTypesGETAsync(id);
+            AddBearerToken();
+
+            var leavetype = await _client.LeaveTypesGETAsync(id);
 
 			return _mapper.Map<LeaveTypeVM>(leavetype);
 
@@ -78,7 +82,9 @@ namespace HR_Management.MVC.Services
 
 		public async Task<List<LeaveTypeVM>> GetLeaveTypes()
 		{
-			var leaveTypes = await _client.LeaveTypesAllAsync();
+
+            AddBearerToken();
+            var leaveTypes = await _client.LeaveTypesAllAsync();
 			return _mapper.Map<List<LeaveTypeVM>>(leaveTypes);
 		}
 
@@ -88,7 +94,9 @@ namespace HR_Management.MVC.Services
 			{
 				LeaveTypeDto leaveTypeDto = _mapper.Map<LeaveTypeDto>(leaveType);
 
-				await _client.LeaveTypesPUTAsync(id, leaveTypeDto);
+                AddBearerToken();
+
+                await _client.LeaveTypesPUTAsync(id, leaveTypeDto);
 
 				return new Response<int>
 				{
