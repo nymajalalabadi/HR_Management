@@ -72,7 +72,8 @@ namespace HR_Management.MVC.Services
 				Email = register.Email,
 				Password = register.Password,
 				FirstName = register.FirstName,
-				LastName = register.LastName
+				LastName = register.LastName,
+				UserName = register.UserName,
 			};
 
 			var response = await _client.RegisterAsync(registrationRequest);
